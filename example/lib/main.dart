@@ -48,8 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Item(
-              title: 'Date Formats',
-              subTitle: date.S_UTC_MDY,
+              title: 'Value',
+              subTitle: (23218000000000).longIndianNumeral,
             ),
             Item(
               title: 'Facebook Date',
@@ -73,15 +73,18 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Item(
               title: 'Population',
-              subTitle: "pakistan".country.population?.asianUnit ?? 'not found',
+              subTitle:
+                  "pakistan".countryDetail.population?.longIndianNumeral ??
+                      'not found',
             ),
             Item(
               title: 'Currency Name',
-              subTitle: "pakistan".currencyName ?? 'not found',
+              subTitle:
+                  "pakistan".countryDetail.currencies![0].name ?? 'not found',
             ),
             Item(
               title: 'Currency Cities',
-              subTitle: "pakistan".cities.toString(),
+              subTitle: "pakistan".countryDetail.cities.toString(),
             ),
           ],
         ),
@@ -100,7 +103,7 @@ class Item extends StatelessWidget {
       title: Text(
         title,
       ),
-      subtitle: Text(
+      subtitle: SelectableText(
         subTitle,
       ),
     );

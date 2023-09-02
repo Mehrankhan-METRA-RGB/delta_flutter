@@ -10,8 +10,13 @@ class CountryHelper {
         (e) => e["name"].toLowerCase() == newCountryName,
         orElse: () => throw UnsupportedError(
             "Your country name is incorrect make sure you entered a correct country name."));
+    Map<String, dynamic> cities = countryCities.firstWhere(
+        (e) => e["country"].toLowerCase() == country.toLowerCase(),
+        orElse: () => throw UnsupportedError(
+            "Your country name is incorrect make sure you entered a correct country name."));
 
-    return Country.fromJson(myCountryDetails);
+    return Country.fromJson(myCountryDetails)
+        .copyWith(cities: cities["city"] as List<String>);
   }
 
   List<String> cities(String country) {
