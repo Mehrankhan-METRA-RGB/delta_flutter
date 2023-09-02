@@ -1,4 +1,5 @@
 import 'package:delta/Extensions/Countries/countries_extension.dart';
+import 'package:delta/Extensions/Counts/counts_extension.dart';
 import 'package:delta/delta.dart';
 import 'package:flutter/material.dart';
 
@@ -71,8 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
               subTitle: date.slash_DMY,
             ),
             Item(
-              title: 'Currency Symbol',
-              subTitle: "pakistan".currencySymbol ?? 'not found',
+              title: 'Population',
+              subTitle: "pakistan".country.population?.asianUnit ?? 'not found',
             ),
             Item(
               title: 'Currency Name',
