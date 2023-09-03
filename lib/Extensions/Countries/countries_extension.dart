@@ -2,6 +2,9 @@ import 'package:delta/Helpers/Country/countries_helper.dart';
 import 'package:delta/Models/country_model.dart';
 
 extension CountryDetail on String {
+  ///FOR EXAMPLE: we want see detail of pakistan.Then we have to call  ["Pakistan".countryDetail] will return below data as Country  Model class
+  ///
+  ///
   ///  {
   ///     "name": "Pakistan",
   ///     "topLevelDomain": [".pk"],

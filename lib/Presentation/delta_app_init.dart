@@ -1,16 +1,21 @@
 import 'package:delta/Data/delta_data.dart';
-import 'package:delta/Helpers/Screen/delta_utils_helper.dart';
+import 'package:delta/Initializer/delta_initializer.dart';
 import 'package:flutter/material.dart';
 
 class DeltaApp extends StatefulWidget {
-  /// A helper widget that initializes [DeltaHelper]
+  /// A helper widget that initializes [Delta]
+  /// Access to Media Query and Theme data without using context,,
+  ///
+  /// [Delta.data.theme] to access ThemeData,
+  ///
+  /// [Delta.data.width] to access current screen width
   const DeltaApp(
       {Key? key,
       required this.builder,
       this.child,
       this.theme,
       this.rebuildFactor = RebuildCases.all,
-      this.designSize = DeltaHelper.defaultSize,
+      this.designSize = Delta.defaultSize,
       this.splitScreenMode = false,
       this.minTextAdapt = false,
       this.useInheritedMediaQuery = false,
@@ -72,6 +77,7 @@ class _DeltaAppState extends State<DeltaApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    // TestDelta(context);
     if (mediaQueryData.size == Size.zero) return zeroSize();
     if (!wrappedInMediaQuery) {
       return notWrapped(context);
@@ -81,7 +87,7 @@ class _DeltaAppState extends State<DeltaApp> with WidgetsBindingObserver {
         return wrapped(context);
       } else {
         return ErrorWidget(
-            "Package Error: Sorry we couldn't found MaterialApp in the nearest ancestors to use Theme.of(context).\n Here is the solution: To Solve this issue please provide a [ThemeData] to theme object or wrap a DeltaApp in MaterialApp Widget");
+            "Package Error: Sorry we couldn't found MaterialApp in the nearest ancestors to use Theme.of(context).\n Here is the solution: To Solve this issue please provide a [ThemeData] to theme property or wrap a DeltaApp in MaterialApp Widget");
       }
     }
     return wrapped(context);
@@ -96,7 +102,7 @@ class _DeltaAppState extends State<DeltaApp> with WidgetsBindingObserver {
       data: mediaQueryData,
       child: Builder(
         builder: (context) {
-          DeltaHelper.init(
+          Delta.init(
             context,
             designSize: widget.designSize,
             splitScreenMode: widget.splitScreenMode,
@@ -131,7 +137,7 @@ class _DeltaAppState extends State<DeltaApp> with WidgetsBindingObserver {
 
   ///When the widget is Wrapped in media query
   Widget wrapped(BuildContext context) {
-    DeltaHelper.init(
+    Delta.init(
       context,
       designSize: widget.designSize,
       splitScreenMode: widget.splitScreenMode,

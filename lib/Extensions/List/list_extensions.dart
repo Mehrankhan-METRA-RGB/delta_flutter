@@ -1,5 +1,5 @@
 extension Unique<E, Id> on List<E> {
-  ///Will return a unique (Type or Model) data  from a list
+  ///Will return a unique (Type) data  from a list
   List<E> unique([Id Function(E element)? id, bool inPlace = true]) {
     final ids = <E>{};
     var list = inPlace ? this : List<E>.from(this);
