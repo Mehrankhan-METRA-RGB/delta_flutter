@@ -79,7 +79,7 @@ class _DeltaAppState extends State<DeltaApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    // TestDelta(context);
+   Delta.init(context);
     if (mediaQueryData.size == Size.zero) return zeroSize();
     if (!wrappedInMediaQuery) {
       return notWrapped(context);
