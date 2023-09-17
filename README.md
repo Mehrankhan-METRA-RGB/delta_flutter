@@ -1,15 +1,12 @@
 # delta_flutter
 
 The `delta_flutter` package is a powerful and flexible Flutter library designed to simplify and enhance the development of interactive and data-driven applications. It offers a wide range of comprehensive set of utilities and extensions for Flutter developers, simplifying tasks such as screen adaptation, length conversions, string manipulation, and country information retrieval. With this package, developers can streamline common Flutter app development challenges and enhance their applications with ease.
-### Key Features
+## Features
 
 `delta_flutter` provides a collection of customizable widgets that go beyond the standard Flutter widgets, enabling you to create dynamic and engaging UI components effortlessly.
 
 
-
-# Package Usage:
-## Getting Started
-
+## Installation
 To use this package, add `delta_flutter` as a dependency in your `pubspec.yaml` file:
 
 ```yaml
@@ -18,10 +15,13 @@ dependencies:
 
 ```
 
+## Usage:
+
 ```dart
 import 'package:delta/delta.dart';
 ```
 
+## Example
 ```dart 
 void main() {
 runApp(const MyApp());
@@ -50,9 +50,9 @@ home: MyHomePage(title: 'Flutter Delta  '),
 
 
 
-# Adaptations
+### Adaptations
 
-### Flutter Screen adaptations Extensions
+  _Flutter Screen adaptations Extensions_
 #### `w`
 
 - **Description**: Returns an adaptive width value based on the current screen's dimensions using the `Delta` class.
@@ -171,7 +171,7 @@ _Works on `MediaQueryData`_
 
 
 
-# Date Formats
+### Date Formats
 -----------
 | USAGE                            | Preview                                                         | Description                                                                                                                                                                                                                                                                                                                                                                                     |
 |----------------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -207,7 +207,7 @@ _Works on `MediaQueryData`_
 
 
 
-##### Numeral Counts Formats
+### Numeral Counts Formats
 -----------
 | USAGE                           | Preview                                        | Description                                                                                                                                                                                            |
 |---------------------------------|------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -219,7 +219,7 @@ _Works on `MediaQueryData`_
 
 
 
-# Countries details
+### Countries details
 Access to the details of any country by calling this extension `countryDetail` right after country name.
 > **Note:** Double check your country spelling for accurate result. Also avoid extra white spaces between the spellings. Don't worry about Capital or small letters in your `String` as this extension is Case-Insensitive.
 
@@ -239,11 +239,11 @@ print("pakistan".countryDetail.toRawJson());
 
 }
 ```
-## DeltaCountry Class
+### DeltaCountry Class
 
 The `DeltaCountry` class provides methods to retrieve detailed information about countries, including their flags, dial codes, names, and more. It also allows you to retrieve information about cities within a specific country.
 
-## Methods
+  **Methods**
 
 `details(String country)`
 
@@ -309,7 +309,7 @@ print("Population: ${pakistanData.population}");
 
 
 -----------
-## Key Descriptions
+### Key Descriptions
 
 
 Here are descriptions for each property in 'DeltaCountry' class:
@@ -371,13 +371,13 @@ Here are descriptions for each property in 'DeltaCountry' class:
 
 
 
-# Length  conversions
+### Length  conversions
 
 The **`DeltaLength`** class is a powerful utility that offers an extensive array of methods for seamless length conversions across a wide spectrum of units. With support for units ranging from the commonplace `centimeters`, `inches`, `feet`, `yards`, and `miles` to the minuscule angstroms, `nanometers`, and `microns`, as well as the astronomical `meters`, `kilometers`, `light-years`, `light-days`, `light-hours`, `light-minutes`, and `light-seconds`, this class empowers developers to effortlessly tackle diverse length conversion challenges.
 
 Whether you're dealing with everyday measurements or delving into the intricacies of the cosmos, the DeltaLength class serves as a versatile toolset for precise and reliable length conversions in your Dart applications.
 
-### Usage
+#### Usage
 When leveraging the `DeltaLength` class for length conversions, there is no need to create separate instances. Instead, you can directly access its functionality via the singleton class `Delta`, which encapsulates a single instance of `data` and property `length` for length-related operations.
 
 This streamlined approach simplifies your code, making it more efficient and concise. By calling the `DeltaLength` methods directly from the `Delta` singleton instance, you can seamlessly perform a wide range of length conversions with elegance and precision in your Dart applications by calling `Delta.data.length`.
@@ -420,7 +420,7 @@ void main() {
 
 
 
-### Inch (in)
+#### Inch (in)
 
 - 1 inch = 1 inch (`inchToInch`)
 - 1 inch = 0.0833 feet (`inchToFoot`)
@@ -435,7 +435,7 @@ void main() {
 - 1 inch = 2.5e-5 light-minutes (`inchToLightMinute`)
 - 1 inch = 1.5e-6 light-seconds (`inchToLightSecond`)
 
-### Foot (ft)
+#### Foot (ft)
 
 - 1 foot = 12 inches (`footToInch`)
 - 1 foot = 1 foot (`footToFoot`)
@@ -450,7 +450,7 @@ void main() {
 - 1 foot = 2.98e-4 light-minutes (`footToLightMinute`)
 - 1 foot = 1.79e-5 light-seconds (`footToLightSecond`)
 
-### Yard (yd)
+#### Yard (yd)
 
 - 1 yard = 36 inches (`yardToInch`)
 - 1 yard = 3 feet (`yardToFoot`)
@@ -465,7 +465,7 @@ void main() {
 - 1 yard = 8.82e-4 light-minutes (`yardToLightMinute`)
 - 1 yard = 5.29e-5 light-seconds (`yardToLightSecond`)
 
-### Mile (mi)
+#### Mile (mi)
 
 - 1 mile = 63,360 inches (`mileToInch`)
 - 1 mile = 5,280 feet (`mileToFoot`)
@@ -480,15 +480,15 @@ void main() {
 - 1 mile = 1.65e-8 light-minutes (`mileToLightMinute`)
 - 1 mile = 9.87e-10 light-seconds (`mileToLightSecond`)
 
-### Cape Foot
+#### Cape Foot
 
 - Coming Soon
 
-### Rod
+#### Rod
 
 - Coming Soon
 
-### Angstrom
+#### Angstrom
 
 - 1 angstrom = 3.937e-9 inches (`angstromToInch`)
 - 1 angstrom = 3.281e-10 feet (`angstromToFoot`)
@@ -503,7 +503,7 @@ void main() {
 - 1 angstrom = 1.03e-19 light-minutes (`angstromToLightMinute`)
 - 1 angstrom = 6.19e-18 light-seconds (`angstromToLightSecond`)
 
-### Nanometer (nm)
+#### Nanometer (nm)
 
 - 1 nanometer = 3.937e-8 inches (`nanometerToInch`)
 - 1 nanometer = 3.281e-9 feet (`nanometerToFoot`)
@@ -518,7 +518,7 @@ void main() {
 - 1 nanometer = 1.03e-16 light-minutes (`nanometerToLightMinute`)
 - 1 nanometer = 6.19e-15 light-seconds (`nanometerToLightSecond`)
 
-### Micron (µm)
+#### Micron (µm)
 
 - 1 micron = 3.937e-5 inches (`micronToInch`)
 - 1 micron = 3.281e-6 feet (`micronToFoot`)
@@ -533,7 +533,7 @@ void main() {
 - 1 micron = 1.03e-13 light-minutes (`micronToLightMinute`)
 - 1 micron = 6.19e-12 light-seconds (`micronToLightSecond`)
 
-### Centimeter (cm)
+#### Centimeter (cm)
 
 - 1 centimeter = 0.3937 inches (`centimeterToInch`)
 - 1 centimeter = 0.0328 feet (`centimeterToFoot`)
@@ -548,7 +548,7 @@ void main() {
 - 1 centimeter = 1.03e-12 light-minutes (`centimeterToLightMinute`)
 - 1 centimeter = 6.19e-11 light-seconds (`centimeterToLightSecond`)
 
-### Meter (m)
+#### Meter (m)
 
 - 1 meter = 39.37 inches (`meterToInch`)
 - 1 meter = 3.281 feet (`meterToFoot`)
@@ -563,7 +563,7 @@ void main() {
 - 1 meter = 1.03e-11 light-minutes (`meterToLightMinute`)
 - 1 meter = 6.19e-10 light-seconds (`meterToLightSecond`)
 
-### Kilometer (km)
+#### Kilometer (km)
 
 - 1 kilometer = 39370.1 inches (`kilometerToInch`)
 - 1 kilometer = 3280.84 feet (`kilometerToFoot`)
@@ -578,7 +578,7 @@ void main() {
 - 1 kilometer = 1.03e-8 light-minutes (`kilometerToLightMinute`)
 - 1 kilometer = 6.19e-7 light-seconds (`kilometerToLightSecond`)
 
-### Light-year
+#### Light-year
 
 - 1 light-year = 7.461e12 inches (`lightYearToInch`)
 - 1 light-year = 6.218e11 feet (`lightYearToFoot`)
@@ -593,7 +593,7 @@ void main() {
 - 1 light-year = 9.73e10 light-minutes (`lightYearToLightMinute`)
 - 1 light-year = 5.84e12 light-seconds (`lightYearToLightSecond`)
 
-### Light-day
+#### Light-day
 
 - 1 light-day = 7.461e10 inches (`lightDayToInch`)
 - 1 light-day = 6.218e9 feet (`lightDayToFoot`)
@@ -608,7 +608,7 @@ void main() {
 - 1 light-day = 1.44e6 light-minutes (`lightDayToLightMinute`)
 - 1 light-day = 8.64e7 light-seconds (`lightDayToLightSecond`)
 
-### Light-hour
+#### Light-hour
 
 - 1 light-hour = 7.461e8 inches (`lightHourToInch`)
 - 1 light-hour = 6.218e7 feet (`lightHourToFoot`)
@@ -623,7 +623,7 @@ void main() {
 - 1 light-hour = 6e3 light-minutes (`lightHourToLightMinute`)
 - 1 light-hour = 3.6e4 light-seconds (`lightHourToLightSecond`)
 
-### Light-minute
+#### Light-minute
 
 - 1 light-minute = 7.461e6 inches (`lightMinuteToInch`)
 - 1 light-minute = 6.218e5 feet (`lightMinuteToFoot`)
@@ -638,7 +638,7 @@ void main() {
 - 1 light-minute = 1 light-minute (`lightMinuteToLightMinute`)
 - 1 light-minute = 6e2 light-seconds (`lightMinuteToLightSecond`)
 
-### Light-second
+#### Light-second
 
 - 1 light-second = 7.461e4 inches (`lightSecondToInch`)
 - 1 light-second = 6.218e3 feet (`lightSecondToFoot`)
@@ -665,9 +665,9 @@ void main() {
 
 
 
-## Dart Extensions for String Manipulation:
+### Dart Extensions for String Manipulation:
 
-### 1: `random`
+#### 1: `random`
 
 The `random` extension generates a randomly unorganized string with a specified length.
 
@@ -679,7 +679,7 @@ String randomString = "hello".random(length: 8);
 ```
 
 
-### 2: `addThousandsSeparator`
+#### 2: `addThousandsSeparator`
 The `addThousandsSeparator` extension adds thousands separators to a number string.
 
 **Example:**
@@ -689,7 +689,7 @@ String formattedNumber = "1234567890".addThousandsSeparator();
 ```
 
 
-### 3: `isValidEmail`
+#### 3: `isValidEmail`
 The `isValidEmail` extension validates if a string is a valid email address.
 
 **Example:**
@@ -700,7 +700,7 @@ bool isValid = "example@email.com".isValidEmail();
 
 
 
-### 4: `toSnakeCase`
+#### 4: `toSnakeCase`
 The `toSnakeCase` extension converts a string to snake_case.
 
 **Example:**
@@ -710,7 +710,7 @@ The `toSnakeCase` extension converts a string to snake_case.
 // Output: "hello_world"
 ```
 
-### 5: `toKebabCase`
+#### 5: `toKebabCase`
 The `toKebabCase` extension converts a string to kebab-case.
 
 **Example:**
@@ -721,7 +721,7 @@ The `toKebabCase` extension converts a string to kebab-case.
 ```
 
 
-### 6: `capitalizeFirstLetter`
+#### 6: `capitalizeFirstLetter`
 The `capitalizeFirstLetter` extension capitalizes the first letter of a string.
 
 **Example:**
@@ -732,7 +732,7 @@ The `capitalizeFirstLetter` extension capitalizes the first letter of a string.
 
 ```
 
-### 7: `capitalizeEachWord`
+#### 7: `capitalizeEachWord`
 The `capitalizeEachWord` extension capitalizes the first letter of each word in a string.
 
 **Example:**
@@ -742,7 +742,7 @@ The `capitalizeEachWord` extension capitalizes the first letter of each word in 
 // Output: "Hello World"
   ```
 
-### 8: `truncate`
+#### 8: `truncate`
 The `truncate` extension truncates a string to a specified length and adds an ellipsis if it exceeds that length.
 
 **Example:**
@@ -751,7 +751,7 @@ The `truncate` extension truncates a string to a specified length and adds an el
  String truncatedText = "This is a long text.".truncate(10);
 // Output: "This is a..."
 ```
-### 9: `findUrls`
+#### 9: `findUrls`
 The `findUrls` extension finds URLs within a text using regular expressions.
 
 **Example:**
@@ -762,7 +762,7 @@ List<String> urls = longText.findUrls();
 // Output: ["https://example.com"]
 ```
 
-### 10: `findPhoneNumbers`
+#### 10: `findPhoneNumbers`
 The `findPhoneNumbers` extension finds phone numbers in various formats within a text using regular expressions.
 
 **Example:**
@@ -774,7 +774,7 @@ List<String> phoneNumbers = textWithPhoneNumbers.findPhoneNumbers();
 
 ```
 
-### 11: `censorWords`
+#### 11: `censorWords`
 The `censorWords` extension censors bad words in a text based on a list of bad words. The list of bad words must be provided as an argument.
 
 **Example:**
@@ -784,7 +784,7 @@ The `censorWords` extension censors bad words in a text based on a list of bad w
 List<String> censoredWords = textWithCensoredWords.censorWords(censors: ["bad"]);
 // Output: "This is a bad word: ****."
 ```
-### 12: `findCoordinates`
+#### 12: `findCoordinates`
 The `findCoordinates` extension finds coordinate pairs within a text using regular expressions.
 
 **Example:**
@@ -794,7 +794,7 @@ The `findCoordinates` extension finds coordinate pairs within a text using regul
 List<String> coordinates = textWithCoordinates.findCoordinates;
 // Output: ["(40.7128, -74.0060)", "(34.0522, -118.2437)"]
 ```
-### 13: `countLetter`
+#### 13: `countLetter`
 The `countLetter` extension counts the occurrences of a specific single letter within a text.
 
 **Example:**
@@ -804,7 +804,7 @@ The `countLetter` extension counts the occurrences of a specific single letter w
 int count = longText.countLetter("a");
 // Output: 2
 ```
-### 14: `countLetters`
+#### 14: `countLetters`
 The `countLetters` extension counts the occurrences of a specific sequence of letters within a text.
 
 **Example:**
@@ -814,7 +814,7 @@ The `countLetters` extension counts the occurrences of a specific sequence of le
 int count = longText.countLetters("ab");
 // Output: 2
 ```
-### 15: `countWord`
+#### 15: `countWord`
 The `countWord` extension counts the occurrences of a specific word within a text.
 
 **Example:**
@@ -838,50 +838,50 @@ int count = longText.countWord("example");
 
 
 
-# Delta Class
+### Delta Class
 
 The `Delta` class is a utility class that provides various methods and properties for handling screen sizes, text scaling, theming, and more in a Flutter application. It offers functionality for adapting the app's layout and design to different screen sizes and orientations.
 
-## Properties
+#### Properties
 
-### `data`
+  `data`
 
 - **Description**: A singleton instance of the `Delta` class.
 - **Type**: `Delta`
 - **Usage**: Use this instance to access the properties and methods provided by the `Delta` class.
 
 
-### `blockedWords`
+ `blockedWords`
 
 - **Description**: A list of words to be censored in text.
 - **Type**: `List<String>?`
 - **Usage**: Define a list of words that you want to censor in text. Words in this list will be replaced with asterisks.
 
-### `theme`
+  `theme`
 
 - **Description**: Returns the theme data for the current app's visual appearance.
 
-### `primaryColor`
+ `primaryColor`
 
 - **Description**: Returns the primary color from the current theme data.
 
-### `platform`
+  `platform`
 
 - **Description**: Returns the current platform (Android, iOS, etc.) for platform-specific behavior.
 
-### `textTheme`
+  `textTheme`
 
 - **Description**: Returns the text theme data from the current theme.
 
-### `length`
+  `length`
 
 - **Description**: A subclass for performing length-related conversions.
 
-### `area`
+  `area`
 
 - **Description**: A subclass for performing area-related conversions.
 
-### `country`
+  `country`
 
 - **Description**: A subclass for retrieving information about countries.
 
@@ -902,9 +902,9 @@ The `Delta` class is a utility class that provides various methods and propertie
 
 
 
-# Adaptations
+### Adaptations
 
-### Flutter Screen adaptations Extensions
+  _Flutter Screen adaptations Extensions_
 #### `w`
 
 - **Description**: Returns an adaptive width value based on the current screen's dimensions using the `Delta` class.
@@ -1023,7 +1023,7 @@ _Works on `MediaQueryData`_
 
 
 
-# Date Formats
+### Date Formats
 -----------
 | USAGE                            | Preview                                                         | Description                                                                                                                                                                                                                                                                                                                                                                                     |
 |----------------------------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1059,7 +1059,7 @@ _Works on `MediaQueryData`_
 
 
 
-##### Numeral Counts Formats
+### Numeral Counts Formats
 -----------
 | USAGE                           | Preview                                        | Description                                                                                                                                                                                            |
 |---------------------------------|------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1071,7 +1071,7 @@ _Works on `MediaQueryData`_
 
 
 
-# Countries details
+### Countries details
 Access to the details of any country by calling this extension `countryDetail` right after country name. 
 > **Note:** Double check your country spelling for accurate result. Also avoid extra white spaces between the spellings. Don't worry about Capital or small letters in your `String` as this extension is Case-Insensitive.
 
@@ -1091,11 +1091,11 @@ print("pakistan".countryDetail.toRawJson());
 
 }
 ```
-## DeltaCountry Class
+#### DeltaCountry Class
 
 The `DeltaCountry` class provides methods to retrieve detailed information about countries, including their flags, dial codes, names, and more. It also allows you to retrieve information about cities within a specific country.
 
-## Methods
+ **Methods**
 
  `details(String country)`
 
@@ -1160,8 +1160,8 @@ print("Population: ${pakistanData.population}");
 
 
 
------------
-## Key Descriptions 
+ 
+  **Key Descriptions** 
 
 
 Here are descriptions for each property in 'DeltaCountry' class:
@@ -1223,13 +1223,13 @@ Here are descriptions for each property in 'DeltaCountry' class:
 
 
 
-# Length  conversions
+### Length  conversions
 
 The **`DeltaLength`** class is a powerful utility that offers an extensive array of methods for seamless length conversions across a wide spectrum of units. With support for units ranging from the commonplace `centimeters`, `inches`, `feet`, `yards`, and `miles` to the minuscule angstroms, `nanometers`, and `microns`, as well as the astronomical `meters`, `kilometers`, `light-years`, `light-days`, `light-hours`, `light-minutes`, and `light-seconds`, this class empowers developers to effortlessly tackle diverse length conversion challenges.
 
 Whether you're dealing with everyday measurements or delving into the intricacies of the cosmos, the DeltaLength class serves as a versatile toolset for precise and reliable length conversions in your Dart applications.
 
-### Usage
+  **Usage**
 When leveraging the `DeltaLength` class for length conversions, there is no need to create separate instances. Instead, you can directly access its functionality via the singleton class `Delta`, which encapsulates a single instance of `data` and property `length` for length-related operations.
 
 This streamlined approach simplifies your code, making it more efficient and concise. By calling the `DeltaLength` methods directly from the `Delta` singleton instance, you can seamlessly perform a wide range of length conversions with elegance and precision in your Dart applications by calling `Delta.data.length`.
@@ -1272,7 +1272,7 @@ void main() {
 
 
 
-### Inch (in)
+#### Inch (in)
 
 - 1 inch = 1 inch (`inchToInch`)
 - 1 inch = 0.0833 feet (`inchToFoot`)
@@ -1287,7 +1287,7 @@ void main() {
 - 1 inch = 2.5e-5 light-minutes (`inchToLightMinute`)
 - 1 inch = 1.5e-6 light-seconds (`inchToLightSecond`)
 
-### Foot (ft)
+#### Foot (ft)
 
 - 1 foot = 12 inches (`footToInch`)
 - 1 foot = 1 foot (`footToFoot`)
@@ -1302,7 +1302,7 @@ void main() {
 - 1 foot = 2.98e-4 light-minutes (`footToLightMinute`)
 - 1 foot = 1.79e-5 light-seconds (`footToLightSecond`)
 
-### Yard (yd)
+#### Yard (yd)
 
 - 1 yard = 36 inches (`yardToInch`)
 - 1 yard = 3 feet (`yardToFoot`)
@@ -1317,7 +1317,7 @@ void main() {
 - 1 yard = 8.82e-4 light-minutes (`yardToLightMinute`)
 - 1 yard = 5.29e-5 light-seconds (`yardToLightSecond`)
 
-### Mile (mi)
+#### Mile (mi)
 
 - 1 mile = 63,360 inches (`mileToInch`)
 - 1 mile = 5,280 feet (`mileToFoot`)
@@ -1332,15 +1332,15 @@ void main() {
 - 1 mile = 1.65e-8 light-minutes (`mileToLightMinute`)
 - 1 mile = 9.87e-10 light-seconds (`mileToLightSecond`)
 
-### Cape Foot
+#### Cape Foot
 
 - Coming Soon
 
-### Rod
+#### Rod
 
 - Coming Soon
 
-### Angstrom
+#### Angstrom
 
 - 1 angstrom = 3.937e-9 inches (`angstromToInch`)
 - 1 angstrom = 3.281e-10 feet (`angstromToFoot`)
@@ -1355,7 +1355,7 @@ void main() {
 - 1 angstrom = 1.03e-19 light-minutes (`angstromToLightMinute`)
 - 1 angstrom = 6.19e-18 light-seconds (`angstromToLightSecond`)
 
-### Nanometer (nm)
+#### Nanometer (nm)
 
 - 1 nanometer = 3.937e-8 inches (`nanometerToInch`)
 - 1 nanometer = 3.281e-9 feet (`nanometerToFoot`)
@@ -1370,7 +1370,7 @@ void main() {
 - 1 nanometer = 1.03e-16 light-minutes (`nanometerToLightMinute`)
 - 1 nanometer = 6.19e-15 light-seconds (`nanometerToLightSecond`)
 
-### Micron (µm)
+#### Micron (µm)
 
 - 1 micron = 3.937e-5 inches (`micronToInch`)
 - 1 micron = 3.281e-6 feet (`micronToFoot`)
@@ -1385,7 +1385,7 @@ void main() {
 - 1 micron = 1.03e-13 light-minutes (`micronToLightMinute`)
 - 1 micron = 6.19e-12 light-seconds (`micronToLightSecond`)
 
-### Centimeter (cm)
+#### Centimeter (cm)
 
 - 1 centimeter = 0.3937 inches (`centimeterToInch`)
 - 1 centimeter = 0.0328 feet (`centimeterToFoot`)
@@ -1400,7 +1400,7 @@ void main() {
 - 1 centimeter = 1.03e-12 light-minutes (`centimeterToLightMinute`)
 - 1 centimeter = 6.19e-11 light-seconds (`centimeterToLightSecond`)
 
-### Meter (m)
+#### Meter (m)
 
 - 1 meter = 39.37 inches (`meterToInch`)
 - 1 meter = 3.281 feet (`meterToFoot`)
@@ -1415,7 +1415,7 @@ void main() {
 - 1 meter = 1.03e-11 light-minutes (`meterToLightMinute`)
 - 1 meter = 6.19e-10 light-seconds (`meterToLightSecond`)
 
-### Kilometer (km)
+#### Kilometer (km)
 
 - 1 kilometer = 39370.1 inches (`kilometerToInch`)
 - 1 kilometer = 3280.84 feet (`kilometerToFoot`)
@@ -1430,7 +1430,7 @@ void main() {
 - 1 kilometer = 1.03e-8 light-minutes (`kilometerToLightMinute`)
 - 1 kilometer = 6.19e-7 light-seconds (`kilometerToLightSecond`)
 
-### Light-year
+#### Light-year
 
 - 1 light-year = 7.461e12 inches (`lightYearToInch`)
 - 1 light-year = 6.218e11 feet (`lightYearToFoot`)
@@ -1445,7 +1445,7 @@ void main() {
 - 1 light-year = 9.73e10 light-minutes (`lightYearToLightMinute`)
 - 1 light-year = 5.84e12 light-seconds (`lightYearToLightSecond`)
 
-### Light-day
+#### Light-day
 
 - 1 light-day = 7.461e10 inches (`lightDayToInch`)
 - 1 light-day = 6.218e9 feet (`lightDayToFoot`)
@@ -1460,7 +1460,7 @@ void main() {
 - 1 light-day = 1.44e6 light-minutes (`lightDayToLightMinute`)
 - 1 light-day = 8.64e7 light-seconds (`lightDayToLightSecond`)
 
-### Light-hour
+#### Light-hour
 
 - 1 light-hour = 7.461e8 inches (`lightHourToInch`)
 - 1 light-hour = 6.218e7 feet (`lightHourToFoot`)
@@ -1475,7 +1475,7 @@ void main() {
 - 1 light-hour = 6e3 light-minutes (`lightHourToLightMinute`)
 - 1 light-hour = 3.6e4 light-seconds (`lightHourToLightSecond`)
 
-### Light-minute
+#### Light-minute
 
 - 1 light-minute = 7.461e6 inches (`lightMinuteToInch`)
 - 1 light-minute = 6.218e5 feet (`lightMinuteToFoot`)
@@ -1490,7 +1490,7 @@ void main() {
 - 1 light-minute = 1 light-minute (`lightMinuteToLightMinute`)
 - 1 light-minute = 6e2 light-seconds (`lightMinuteToLightSecond`)
 
-### Light-second
+#### Light-second
 
 - 1 light-second = 7.461e4 inches (`lightSecondToInch`)
 - 1 light-second = 6.218e3 feet (`lightSecondToFoot`)
@@ -1517,9 +1517,9 @@ void main() {
 
 
 
-## Dart Extensions for String Manipulation:
+### Dart Extensions for String Manipulation:
 
-### 1: `random`
+#### 1: `random`
 
 The `random` extension generates a randomly unorganized string with a specified length.
 
@@ -1531,7 +1531,7 @@ String randomString = "hello".random(length: 8);
 ```
 
 
-### 2: `addThousandsSeparator`
+#### 2: `addThousandsSeparator`
 The `addThousandsSeparator` extension adds thousands separators to a number string.
 
 **Example:**
@@ -1541,7 +1541,7 @@ String formattedNumber = "1234567890".addThousandsSeparator();
 ```
 
 
-### 3: `isValidEmail`
+#### 3: `isValidEmail`
 The `isValidEmail` extension validates if a string is a valid email address.
 
 **Example:**
@@ -1552,7 +1552,7 @@ bool isValid = "example@email.com".isValidEmail();
 
 
 
-### 4: `toSnakeCase`
+#### 4: `toSnakeCase`
 The `toSnakeCase` extension converts a string to snake_case.
 
 **Example:**
@@ -1562,7 +1562,7 @@ The `toSnakeCase` extension converts a string to snake_case.
 // Output: "hello_world"
 ```
 
-### 5: `toKebabCase`
+#### 5: `toKebabCase`
 The `toKebabCase` extension converts a string to kebab-case.
 
 **Example:**
@@ -1573,7 +1573,7 @@ The `toKebabCase` extension converts a string to kebab-case.
 ```
 
 
-### 6: `capitalizeFirstLetter`
+#### 6: `capitalizeFirstLetter`
 The `capitalizeFirstLetter` extension capitalizes the first letter of a string.
 
 **Example:**
@@ -1584,7 +1584,7 @@ The `capitalizeFirstLetter` extension capitalizes the first letter of a string.
 
 ```
 
-### 7: `capitalizeEachWord`
+#### 7: `capitalizeEachWord`
 The `capitalizeEachWord` extension capitalizes the first letter of each word in a string.
 
 **Example:**
@@ -1594,7 +1594,7 @@ The `capitalizeEachWord` extension capitalizes the first letter of each word in 
 // Output: "Hello World"
   ```
 
-### 8: `truncate`
+#### 8: `truncate`
 The `truncate` extension truncates a string to a specified length and adds an ellipsis if it exceeds that length.
 
 **Example:**
@@ -1603,7 +1603,7 @@ The `truncate` extension truncates a string to a specified length and adds an el
  String truncatedText = "This is a long text.".truncate(10);
 // Output: "This is a..."
 ```
-### 9: `findUrls`
+#### 9: `findUrls`
 The `findUrls` extension finds URLs within a text using regular expressions.
 
 **Example:**
@@ -1614,7 +1614,7 @@ List<String> urls = longText.findUrls();
 // Output: ["https://example.com"]
 ```
 
-### 10: `findPhoneNumbers`
+#### 10: `findPhoneNumbers`
 The `findPhoneNumbers` extension finds phone numbers in various formats within a text using regular expressions.
 
 **Example:**
@@ -1626,7 +1626,7 @@ List<String> phoneNumbers = textWithPhoneNumbers.findPhoneNumbers();
 
 ```
 
-### 11: `censorWords`
+#### 11: `censorWords`
 The `censorWords` extension censors bad words in a text based on a list of bad words. The list of bad words must be provided as an argument.
 
 **Example:**
@@ -1636,7 +1636,7 @@ The `censorWords` extension censors bad words in a text based on a list of bad w
 List<String> censoredWords = textWithCensoredWords.censorWords(censors: ["bad"]);
 // Output: "This is a bad word: ****."
 ```
-### 12: `findCoordinates`
+#### 12: `findCoordinates`
 The `findCoordinates` extension finds coordinate pairs within a text using regular expressions.
 
 **Example:**
@@ -1646,7 +1646,7 @@ The `findCoordinates` extension finds coordinate pairs within a text using regul
 List<String> coordinates = textWithCoordinates.findCoordinates;
 // Output: ["(40.7128, -74.0060)", "(34.0522, -118.2437)"]
 ```
-### 13: `countLetter`
+#### 13: `countLetter`
 The `countLetter` extension counts the occurrences of a specific single letter within a text.
 
 **Example:**
@@ -1656,7 +1656,7 @@ The `countLetter` extension counts the occurrences of a specific single letter w
 int count = longText.countLetter("a");
 // Output: 2
 ```
-### 14: `countLetters`
+#### 14: `countLetters`
 The `countLetters` extension counts the occurrences of a specific sequence of letters within a text.
 
 **Example:**
@@ -1666,7 +1666,7 @@ The `countLetters` extension counts the occurrences of a specific sequence of le
 int count = longText.countLetters("ab");
 // Output: 2
 ```
-### 15: `countWord`
+#### 15: `countWord`
 The `countWord` extension counts the occurrences of a specific word within a text.
 
 **Example:**
@@ -1679,10 +1679,9 @@ int count = longText.countWord("example");
 
 
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
 
-
-# List extensions
+### List extensions
 
 The `Unique` extension provides several utility functions that can be used with lists in Dart to perform common operations such as obtaining unique elements, filtering, mapping, custom sorting, pagination, and grouping items based on specific criteria.
 
@@ -1736,7 +1735,7 @@ Example:
 List<String> indexedFruits = fruits.mapIndexed((index, fruit) => '$index: $fruit');
   // Output: Indexed fruits: [0: apple, 1: banana, 2: cherry]
 ```
-### `customSort`
+#### `customSort`
  
  `List<E> customSort(int Function(E a, E b) compare)`
 Sorts the list using a custom comparison function. This function enables you to perform complex sorting based on specific properties of the elements.
@@ -1761,7 +1760,7 @@ List<Person> sortedPeople = people.customSort((a, b) => a.age.compareTo(b.age));
 // print('Sorted people: $sortedPeople');
 
 ```
-### `paginate`
+#### `paginate`
   `List<E> paginate(int page, int itemsPerPage)`
 Performs pagination on the list, returning a sublist of elements for a specific page and number of items per page. This is useful when working with paginated data.
 
@@ -1775,7 +1774,7 @@ List<int> allNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 List<int> page2Items = allNumbers.paginate(2, 3);
 // print('Page 2 items: $page2Items'); // Output: Page 2 items: [4, 5, 6]
 ```
-### `groupBy`
+#### `groupBy`
  
  `Map<K, List<E>> groupBy<K>(K Function(E item) keyFunction)`
 Groups elements in the list based on a key derived from each element using the provided keyFunction. This extension simplifies the process of creating a map where keys correspond to specific properties of the elements, and values are lists of elements with the same key.
@@ -1801,7 +1800,7 @@ Map<String, List<Person>> groupedPeople = people.groupBy((person) => person.city
 ```
 
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
 
 
 
@@ -1811,64 +1810,63 @@ Map<String, List<Person>> groupedPeople = people.groupBy((person) => person.city
 
 
 
-
-# Delta Class
+### Delta Class
 
 The `Delta` class is a utility class that provides various methods and properties for handling screen sizes, text scaling, theming, and more in a Flutter application. It offers functionality for adapting the app's layout and design to different screen sizes and orientations.
 
-## Properties
+  **Properties**
 
-### `data`
+#### `data`
 
 - **Description**: A singleton instance of the `Delta` class.
 - **Type**: `Delta`
 - **Usage**: Use this instance to access the properties and methods provided by the `Delta` class.
 
 
-### `blockedWords`
+#### `blockedWords`
 
 - **Description**: A list of words to be censored in text.
 - **Type**: `List<String>?`
 - **Usage**: Define a list of words that you want to censor in text. Words in this list will be replaced with asterisks.
 
-### `theme`
+#### `theme`
 
 - **Description**: Returns the theme data for the current app's visual appearance.
 
-### `primaryColor`
+#### `primaryColor`
 
 - **Description**: Returns the primary color from the current theme data.
 
-### `platform`
+#### `platform`
 
 - **Description**: Returns the current platform (Android, iOS, etc.) for platform-specific behavior.
 
-### `textTheme`
+#### `textTheme`
 
 - **Description**: Returns the text theme data from the current theme.
 
-### `length`
+#### `length`
 
 - **Description**: A subclass for performing length-related conversions.
 
-### `area`
+#### `area`
 
 - **Description**: A subclass for performing area-related conversions.
 
-### `country`
+#### `country`
 
 - **Description**: A subclass for retrieving information about countries.
 
 
 
  
-# DeltaArea Class
+### DeltaArea Class
 
 The `DeltaArea` class provides various utility methods for performing calculations related to geographic areas and shapes. It includes functions for finding displacement between coordinates, calculating areas of different shapes (e.g., circle, square, triangle), and generating coordinates for circular paths.
 
-## Methods
+  **Methods**
 
-### `findDisplacement`
+#### `findDisplacement`
 
 ```dart
 double findDisplacement({
@@ -1877,12 +1875,12 @@ double findDisplacement({
 });
 //Calculates the displacement (distance) between two geographical coordinates in kilometers using the Haversine formula.
 ```
-### `calculateDistance`
+#### `calculateDistance`
 ```dart
  double calculateDistance(double lat1, double lon1, double lat2, double lon2);
 // Calculates the distance between two sets of latitude and longitude coordinates using the Haversine formula. Returns the distance in kilometers.
 ```
-### `circleCoordinates`
+#### `circleCoordinates`
 ```dart
  List<DeltaCoordinate> circleCoordinates(
   DeltaCoordinate center,
@@ -1891,50 +1889,48 @@ double findDisplacement({
 );
 //Generates a list of geographical coordinates representing points evenly distributed around a circular path with a specified center, radius, and the number of points.
 ```
-### `calculateZigzagArea`
+#### `calculateZigzagArea`
 ``` dart
  double calculateZigzagArea(List<Point<double>> vertices)
 //Calculates the area of a zigzag-shaped polygon defined by a list of vertices using the shoelace formula. Returns the area as a double value.
 ```
-### `calculateCircleArea`
+#### `calculateCircleArea`
 ```dart
  double calculateCircleArea(double radius);
 //Calculates the area of a circle given its radius. Returns the area as a double value.
 ```
-### `calculateSquareArea`
+#### `calculateSquareArea`
 ```dart
  double calculateSquareArea(double sideLength);
 ///Calculates the area of a square given the length of one side. Returns the area as a double value.
 ```
-### `calculateRectangleArea`
+#### `calculateRectangleArea`
 ```dart
  double calculateRectangleArea(double length, double width);
 ///Calculates the area of a rectangle given its length and width. Returns the area as a double value.
 ```
 
-### `calculateTriangleArea`
+#### `calculateTriangleArea`
 ```dart
  double calculateTriangleArea(double base, double height);
 ///Calculates the area of a triangle given its base and height. Returns the area as a double value.
 ```
-### `calculateRightAngleTriangleArea`
+#### `calculateRightAngleTriangleArea`
 ```dart
  double calculateRightAngleTriangleArea(double base, double height);
 //Calculates the area of a right-angled triangle given its base and height. Returns the area as a double value.
 ```
-### `calculateEquilateralTriangleArea`
+#### `calculateEquilateralTriangleArea`
 ```dart
  double calculateEquilateralTriangleArea(double sideLength);
 //Calculates the area of an equilateral triangle given the length of its sides. Returns the area as a double value.
 ```
 
+## Issues and Feedback
+Please file any issues, bugs, or feature requests in the GitHub repository.
 
-
-
-
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+## 🔗 Links
+ [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mehran-ullah-742035153/)
+ 
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
