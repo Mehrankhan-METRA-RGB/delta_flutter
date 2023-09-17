@@ -4,3 +4,8 @@
 * ADDED: Screen Adaptations
 * EXTENSIONS: on List, String, MediaQuery, Country details 2023,
 
+## 0.0.2
+* Adapted README only
+
+## 0.0.3
+Added new key features
