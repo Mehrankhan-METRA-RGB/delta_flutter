@@ -1,6 +1,6 @@
 name: delta
 description: The `delta_flutter` package is a powerful and flexible Flutter library designed to simplify and enhance the development of interactive and data-driven applications. It offers a wide range of comprehensive set of utilities and extensions for Flutter developers, simplifying tasks such as screen adaptation, length conversions, string manipulation, and country information retrieval. With this package, developers can streamline common Flutter app development challenges and enhance their applications with ease.
-version: 0.0.1
+version: 0.0.3
 homepage: https://github.com/Mehrankhan-METRA-RGB/delta_flutter/blob/master/README.md
 repository: https://github.com/Mehrankhan-METRA-RGB/delta_flutter
 issue_tracker: https://github.com/Mehrankhan-METRA-RGB/delta_flutter/issues

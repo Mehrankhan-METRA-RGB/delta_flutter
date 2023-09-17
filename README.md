@@ -1,17 +1,25 @@
 # Delta
 
-The `delta_flutter` package is a powerful and flexible Flutter library designed to simplify and enhance the development of interactive and data-driven applications. It offers a wide range of comprehensive set of utilities and extensions for Flutter developers, simplifying tasks such as screen adaptation, length conversions, string manipulation, and country information retrieval. With this package, developers can streamline common Flutter app development challenges and enhance their applications with ease.
+The `delta` package is a powerful and flexible Flutter library designed to simplify and enhance the development of interactive and data-driven applications. It offers a wide range of comprehensive set of utilities and extensions for Flutter developers, simplifying tasks such as screen adaptation, length conversions, string manipulation, and country information retrieval. With this package, developers can streamline common Flutter app development challenges and enhance their applications with ease.
 ## Features
-`delta_flutter` provides a collection of customizable widgets that go beyond the standard Flutter widgets, enabling you to create dynamic and engaging UI components effortlessly.
-- Use `MediaQuery` and `Theme` without `context`
+`delta` provides a collection of customizable widgets that go beyond the standard Flutter widgets, enabling you to create dynamic and engaging UI components effortlessly.
+- Access `MediaQuery` and `Theme` without using `context`
+- Use `px` value directly in app it will converting automatically to flutter adaptive unit by using `.px` extension
+- Adaptive `width` and `height`
+- Use `Area` Methods by accessing `Delta.data.area`
+- Use `LengthConversions` Methods by accessing `Delta.data.length`
+- Use `isMobile` and `isTablet` extension on `MediaQueryData` it will detect device type
+- Use  **American** and **Indian** Numeric Units
+- Use `DateTime` Format designs for displaying in 24 different ways
+- 
 
 
 ## Installation
-To use this package, add `delta_flutter` as a dependency in your `pubspec.yaml` file:
+To use this package, add `delta` as a dependency in your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  delta_flutter: ^1.0.0
+  delta: ^0.0.3
 
 ```
 
