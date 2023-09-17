@@ -1,6 +1,6 @@
 # delta_flutter
 
-The `delta_flutter` package is a powerful and flexible Flutter library designed to simplify and enhance the development of interactive and data-driven applications. It offers a wide range of utilities, widgets, and tools that help Flutter developers build feature-rich and visually appealing user interfaces with ease.
+The `delta_flutter` package is a powerful and flexible Flutter library designed to simplify and enhance the development of interactive and data-driven applications. It offers a wide range of comprehensive set of utilities and extensions for Flutter developers, simplifying tasks such as screen adaptation, length conversions, string manipulation, and country information retrieval. With this package, developers can streamline common Flutter app development challenges and enhance their applications with ease.
 ### Key Features
 
 `delta_flutter` provides a collection of customizable widgets that go beyond the standard Flutter widgets, enabling you to create dynamic and engaging UI components effortlessly.
@@ -1682,6 +1682,128 @@ int count = longText.countWord("example");
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+# List extensions
+
+The `Unique` extension provides several utility functions that can be used with lists in Dart to perform common operations such as obtaining unique elements, filtering, mapping, custom sorting, pagination, and grouping items based on specific criteria.
+
+ 
+#### `unique`
+
+ `List<E> unique([Id Function(E element)? id, bool inPlace = true])`
+Returns a list of unique elements from the original list. You can specify an optional id function to determine uniqueness based on a specific property of the elements. The inPlace parameter determines whether the operation is performed in place or on a copy of the original list.
+
+Example:
+
+```dart
+ 
+List<int> numbers = [1, 2, 2, 3, 4, 4, 5, 5, 5];
+
+// Get unique elements
+List<int> uniqueNumbers = numbers.unique();
+// print('Unique numbers: $uniqueNumbers'); 
+// Output: Unique numbers: [1, 2, 3, 4, 5]
+```
+
+
+
+#### `filter`
+ 
+` List<E> filter(bool Function(E) test)`
+Returns a list containing elements that satisfy the given test function. This function simplifies the process of filtering elements from a list based on a specific condition.
+
+Example:
+
+```dart
+ 
+List<int> numbers = [1, 2, 3, 4, 5];
+
+// Filter even numbers
+List<int> evenNumbers = numbers.filter((number) => number.isEven);
+// print('Even numbers: $evenNumbers'); // Output: Even numbers: [2, 4]
+
+```
+
+####`mapIndexed`
+  `List<R> mapIndexed<R>(R Function(int index, E item) f);`
+ Maps each element in the list to a new value using the provided function. The function f takes both the index and the current item as parameters, allowing you to map elements while also knowing their positions in the list.
+ 
+Example:
+
+```dart
+ List<String> fruits = ['apple', 'banana', 'cherry'];
+
+// Map elements with their indices
+List<String> indexedFruits = fruits.mapIndexed((index, fruit) => '$index: $fruit');
+  // Output: Indexed fruits: [0: apple, 1: banana, 2: cherry]
+```
+### `customSort`
+ 
+ `List<E> customSort(int Function(E a, E b) compare)`
+Sorts the list using a custom comparison function. This function enables you to perform complex sorting based on specific properties of the elements.
+
+Example:
+
+```dart
+ class Person {
+String name;
+int age;
+Person(this.name, this.age);
+}
+
+List<Person> people = [
+Person('Alice', 30),
+Person('Bob', 25),
+Person('Charlie', 35),
+];
+
+// Sort people by age in ascending order
+List<Person> sortedPeople = people.customSort((a, b) => a.age.compareTo(b.age));
+// print('Sorted people: $sortedPeople');
+
+```
+### `paginate`
+  `List<E> paginate(int page, int itemsPerPage)`
+Performs pagination on the list, returning a sublist of elements for a specific page and number of items per page. This is useful when working with paginated data.
+
+Example:
+
+```dart
+ 
+List<int> allNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// Get items for page 2 with 3 items per page
+List<int> page2Items = allNumbers.paginate(2, 3);
+// print('Page 2 items: $page2Items'); // Output: Page 2 items: [4, 5, 6]
+```
+### `groupBy`
+ 
+ `Map<K, List<E>> groupBy<K>(K Function(E item) keyFunction)`
+Groups elements in the list based on a key derived from each element using the provided keyFunction. This extension simplifies the process of creating a map where keys correspond to specific properties of the elements, and values are lists of elements with the same key.
+
+Example:
+
+```dart
+ class Person {
+String name;
+String city;
+Person(this.name, this.city);
+}
+
+List<Person> people = [
+Person('Alice', 'New York'),
+Person('Bob', 'San Francisco'),
+Person('Charlie', 'New York'),
+];
+
+// Group people by city
+Map<String, List<Person>> groupedPeople = people.groupBy((person) => person.city);
+// print('Grouped people: $groupedPeople');
+```
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 
@@ -1740,31 +1862,75 @@ The `Delta` class is a utility class that provides various methods and propertie
 
 
  
+# DeltaArea Class
 
-## Getting Started
+The `DeltaArea` class provides various utility methods for performing calculations related to geographic areas and shapes. It includes functions for finding displacement between coordinates, calculating areas of different shapes (e.g., circle, square, triangle), and generating coordinates for circular paths.
 
-To use this package, add `delta_flutter` as a dependency in your `pubspec.yaml` file:
+## Methods
 
-```yaml
-dependencies:
-  delta_flutter: ^1.0.0
+### `findDisplacement`
 
+```dart
+double findDisplacement({
+  required DeltaCoordinate from,
+  required DeltaCoordinate to,
+});
+//Calculates the displacement (distance) between two geographical coordinates in kilometers using the Haversine formula.
+```
+### `calculateDistance`
+```dart
+ double calculateDistance(double lat1, double lon1, double lat2, double lon2);
+// Calculates the distance between two sets of latitude and longitude coordinates using the Haversine formula. Returns the distance in kilometers.
+```
+### `circleCoordinates`
+```dart
+ List<DeltaCoordinate> circleCoordinates(
+  DeltaCoordinate center,
+  double radius,
+  int numPoints,
+);
+//Generates a list of geographical coordinates representing points evenly distributed around a circular path with a specified center, radius, and the number of points.
+```
+### `calculateZigzagArea`
+``` dart
+ double calculateZigzagArea(List<Point<double>> vertices)
+//Calculates the area of a zigzag-shaped polygon defined by a list of vertices using the shoelace formula. Returns the area as a double value.
+```
+### `calculateCircleArea`
+```dart
+ double calculateCircleArea(double radius);
+//Calculates the area of a circle given its radius. Returns the area as a double value.
+```
+### `calculateSquareArea`
+```dart
+ double calculateSquareArea(double sideLength);
+///Calculates the area of a square given the length of one side. Returns the area as a double value.
+```
+### `calculateRectangleArea`
+```dart
+ double calculateRectangleArea(double length, double width);
+///Calculates the area of a rectangle given its length and width. Returns the area as a double value.
+```
+
+### `calculateTriangleArea`
+```dart
+ double calculateTriangleArea(double base, double height);
+///Calculates the area of a triangle given its base and height. Returns the area as a double value.
+```
+### `calculateRightAngleTriangleArea`
+```dart
+ double calculateRightAngleTriangleArea(double base, double height);
+//Calculates the area of a right-angled triangle given its base and height. Returns the area as a double value.
+```
+### `calculateEquilateralTriangleArea`
+```dart
+ double calculateEquilateralTriangleArea(double sideLength);
+//Calculates the area of an equilateral triangle given the length of its sides. Returns the area as a double value.
 ```
 
 
 
 
-
-
-#### Theme and Styling:
-Customize the look and feel of your app using the theming and styling options offered by delta_flutter, ensuring a consistent and appealing user experience.
-
-#### Community-Driven:
-`delta_flutter` is continuously improved and maintained by an active community of Flutter enthusiasts, ensuring compatibility with the latest Flutter releases and best practices.
-
-
-
-## Features
 
 
 ## Additional information
