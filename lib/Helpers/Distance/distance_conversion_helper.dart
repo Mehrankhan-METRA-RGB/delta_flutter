@@ -6,7 +6,7 @@ import 'package:delta/Helpers/Distance/Mixins/meters_conversions.dart';
 import 'package:delta/Helpers/Distance/Mixins/mile_conversions.dart';
 import 'package:delta/Helpers/Distance/Mixins/yard_conversions.dart';
 
-class DistanceConversionHelper
+class DeltaLength
     with
         DeltaMetersConversions,
         DeltaCentiMeters,
@@ -15,5 +15,5 @@ class DistanceConversionHelper
         DeltaKiloMeters,
         DeltaMiles,
         DeltaYards {
-  DistanceConversionHelper();
+  DeltaLength();
 }

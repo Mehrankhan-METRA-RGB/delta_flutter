@@ -4,10 +4,10 @@ import 'package:delta/Initializer/delta_initializer.dart';
 import 'package:flutter/material.dart';
 
 extension SizeExtension on num {
-  ///[Delta.adaptiveWidth]
+  ///  adaptive width
   double get w => Delta().adaptiveWidth(this);
 
-  ///[Delta.adaptiveHeight]
+  /// adaptive Height
   double get h => Delta().adaptiveHeight(this);
 
   ///[Delta.radius]

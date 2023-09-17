@@ -8,6 +8,7 @@ import 'dart:math' show min, max;
 import 'dart:ui' show FlutterView;
 
 import 'package:delta/Helpers/Area/area_helper.dart';
+import 'package:delta/Helpers/Country/countries_helper.dart';
 import 'package:delta/Helpers/Distance/distance_conversion_helper.dart';
 import 'package:flutter/material.dart';
 
@@ -605,9 +606,11 @@ class Delta {
   ///
   /// Light-second ,
 
-  DistanceConversionHelper convert = DistanceConversionHelper();
+  DeltaLength length = DeltaLength();
 
   DeltaArea area = DeltaArea();
+
+  DeltaCountry country = DeltaCountry();
 }
 
 extension on MediaQueryData? {

@@ -75,5 +75,5 @@ extension CountryDetail on String {
   ///     "cities":["Peshawar","Mardan","Lahore","Islamabad"..........]
   ///   },
 
-  Country get countryDetail => CountryHelper().countryDetails(trim());
+  Country get countryDetail => DeltaCountry().details(trim());
 }

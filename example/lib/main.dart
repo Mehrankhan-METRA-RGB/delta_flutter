@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Item(
               title: '90 meterToLightMinute',
-              subTitle: "${Delta.data.convert.meterToLightMinute(90)}",
+              subTitle: "${Delta.data.length.centimeterToInch(90)}",
             ),
 
             Item(
