@@ -1723,7 +1723,7 @@ List<int> evenNumbers = numbers.filter((number) => number.isEven);
 
 ```
 
-####`mapIndexed`
+#### `mapIndexed`
   `List<R> mapIndexed<R>(R Function(int index, E item) f);`
  Maps each element in the list to a new value using the provided function. The function f takes both the index and the current item as parameters, allowing you to map elements while also knowing their positions in the list.
  
