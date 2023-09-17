@@ -7,6 +7,8 @@ import 'dart:async' show Completer;
 import 'dart:math' show min, max;
 import 'dart:ui' show FlutterView;
 
+import 'package:delta/Helpers/Area/area_helper.dart';
+import 'package:delta/Helpers/Distance/distance_conversion_helper.dart';
 import 'package:flutter/material.dart';
 
 class Delta {
@@ -88,11 +90,20 @@ class Delta {
   }
 
   /// Initializing the library.
+  ///
+  ///
+  ///
+  ///We define a list of bad words (censorWords) that you want to censor.
+  ///
+  /// We use the replaceAllMapped method to replace each occurrence of a bad word in the text with asterisks of the same length as the bad word.
+  ///
+  /// It prints the text with the bad words (censorWords) replaced by asterisks.
 
   static Future<void> init(BuildContext context,
       {Size designSize = defaultSize,
       bool splitScreenMode = false,
       ThemeData? defaultTheme,
+      List<String>? censorWords,
       bool minTextAdapt = false,
       bool scaleByHeight = false}) async {
     final mediaQueryContext =
@@ -113,6 +124,7 @@ class Delta {
             : Orientation.portrait);
 
     data
+      ..blockedWords = censorWords
       .._context = scaleByHeight ? null : context
       .._uiSize = designSize
       .._themeData = defaultTheme ?? Theme.of(context)
@@ -128,6 +140,15 @@ class Delta {
 
     return initCompleter.future;
   }
+
+  ///We define a list of bad words (badWords) that you want to censor.
+  ///
+  /// We create a regular expression pattern by joining the bad words with the word boundary anchors (\b) and using the | (OR) operator to match any of the bad words. This ensures that only complete words are censored, not partial matches.
+  ///
+  /// We use the replaceAllMapped method to replace each occurrence of a bad word in the text with asterisks of the same length as the bad word.
+  ///
+  /// Finally, we demonstrate how to use the censorBadWords function with a sample text, and it prints the text with the bad words replaced by asterisks.
+  List<String>? blockedWords;
 
   ///Get screen orientation
   Orientation get orientation => _orientation;
@@ -306,6 +327,7 @@ class Delta {
   ///
   /// See <https://material.io/design/color/> for
   /// more discussion on how to pick the right colors.
+  ///
 
   ThemeData get theme => _themeData;
 
@@ -320,6 +342,272 @@ class Delta {
 
   ///Text with a color that contrasts with the card and canvas colors.
   TextTheme get textTheme => _themeData.textTheme;
+
+  ///Converting between all these units of length involves a large number of possible conversions. Here are the conversions between all the mentioned units:
+  ///
+  ///
+  ///
+  /// Millimeter (mm) to:
+  ///
+  /// Inch (in),
+  /// Foot (ft),
+  /// Yard (yd),
+  /// Mile (mi),
+  /// Cape Foot,
+  /// Rod,
+  /// Angstrom,
+  /// Nanometer (nm),
+  /// Micron (µm),
+  /// Centimeter (cm),
+  /// Meter (m),
+  /// Kilometer (km),
+  /// Light-year,
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Inch (in) to:
+  ///
+  /// Foot (ft),
+  /// Yard (yd),
+  /// Mile (mi),
+  /// Cape Foot,
+  /// Rod,
+  /// Angstrom,
+  /// Nanometer (nm),
+  /// Micron (µm),
+  /// Millimeter (mm),
+  /// Centimeter (cm),
+  /// Meter (m),
+  /// Kilometer (km),
+  /// Light-year,
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Foot (ft) to:
+  ///
+  /// Yard (yd),
+  /// Mile (mi),
+  /// Cape Foot,
+  /// Rod,
+  /// Angstrom,
+  /// Nanometer (nm),
+  /// Micron (µm),
+  /// Millimeter (mm),
+  /// Centimeter (cm),
+  /// Meter (m),
+  /// Kilometer (km),
+  /// Light-year,
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Yard (yd) to:
+  ///
+  /// Mile (mi),
+  /// Cape Foot,
+  /// Rod,
+  /// Angstrom,
+  /// Nanometer (nm),
+  /// Micron (µm),
+  /// Millimeter (mm),
+  /// Centimeter (cm),
+  /// Meter (m),
+  /// Kilometer (km),
+  /// Light-year,
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Mile (mi) to:
+  ///
+  /// Cape Foot,
+  /// Rod,
+  /// Angstrom,
+  /// Nanometer (nm),
+  /// Micron (µm),
+  /// Millimeter (mm),
+  /// Centimeter (cm),
+  /// Meter (m),
+  /// Kilometer (km),
+  /// Light-year,
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Cape Foot to:
+  ///
+  /// Rod,
+  /// Angstrom,
+  /// Nanometer (nm),
+  /// Micron (µm),
+  /// Millimeter (mm),
+  /// Centimeter (cm),
+  /// Meter (m),
+  /// Kilometer (km),
+  /// Light-year,
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Rod to:
+  ///
+  /// Angstrom,
+  /// Nanometer (nm),
+  /// Micron (µm),
+  /// Millimeter (mm),
+  /// Centimeter (cm),
+  /// Meter (m),
+  /// Kilometer (km),
+  /// Light-year,
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Angstrom to:
+  ///
+  /// Nanometer (nm),
+  /// Micron (µm),
+  /// Millimeter (mm),
+  /// Centimeter (cm),
+  /// Meter (m),
+  /// Kilometer (km),
+  /// Light-year,
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Nanometer (nm) to:
+  ///
+  /// Micron (µm),
+  /// Millimeter (mm),
+  /// Centimeter (cm),
+  /// Meter (m),
+  /// Kilometer (km),
+  /// Light-year,
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Micron (µm) to:
+  ///
+  /// Millimeter (mm),
+  /// Centimeter (cm),
+  /// Meter (m),
+  /// Kilometer (km),
+  /// Light-year,
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Millimeter (mm) to:
+  ///
+  /// Centimeter (cm),
+  /// Meter (m),
+  /// Kilometer (km),
+  /// Light-year,
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Centimeter (cm) to:
+  ///
+  /// Meter (m),
+  /// Kilometer (km),
+  /// Light-year,
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Meter (m) to:
+  ///
+  /// Kilometer (km)
+  /// Light-year,
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Kilometer (km) to:
+  ///
+  /// Light-year,
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Light-year to:
+  ///
+  /// Light-day,
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Light-day to:
+  ///
+  /// Light-hour,
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Light-hour to:
+  ///
+  /// Light-minute,
+  /// Light-second,
+  ///
+  ///
+  ///
+  /// Light-minute to:
+  ///
+  /// Light-second ,
+
+  DistanceConversionHelper convert = DistanceConversionHelper();
+
+  DeltaArea area = DeltaArea();
 }
 
 extension on MediaQueryData? {

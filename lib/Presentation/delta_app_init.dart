@@ -14,10 +14,10 @@ class DeltaApp extends StatefulWidget {
       required this.builder,
       this.child,
       this.theme,
-      this.rebuildFactor = RebuildCases.all,
-      this.designSize = Delta.defaultSize,
-      this.splitScreenMode = false,
-      this.minTextAdapt = false,
+      this.changeState = SetState.onAll,
+      this.size = Delta.defaultSize,
+      this.splitMode = false,
+      this.minTextAdaptation = false,
       this.useInheritedMediaQuery = false,
       this.scaleByHeight = false})
       : super(key: key);
@@ -25,14 +25,16 @@ class DeltaApp extends StatefulWidget {
   final DeltaBuilder builder;
   final Widget? child;
   final ThemeData? theme;
-  final bool splitScreenMode;
-  final bool minTextAdapt;
+
+  ///Ensure that the screen is Split or not
+  final bool splitMode;
+  final bool minTextAdaptation;
   final bool useInheritedMediaQuery;
   final bool scaleByHeight;
-  final DeltaRebuildCase rebuildFactor;
+  final DeltaRebuildCase changeState;
 
   /// The [Size] of the device in the design draft, in dp
-  final Size designSize;
+  final Size size;
 
   @override
   State<DeltaApp> createState() => _DeltaAppState();
@@ -56,9 +58,9 @@ class _DeltaAppState extends State<DeltaApp> with WidgetsBindingObserver {
     final old = _mediaQueryData!;
     final data = newData;
 
-    if (widget.scaleByHeight || widget.rebuildFactor(old, data)) {
+    if (widget.scaleByHeight || widget.changeState(old, data)) {
       _mediaQueryData = data;
-      _updateElementInTree(context as Element);
+      _updateElement(context as Element);
     }
   }
 
@@ -104,13 +106,13 @@ class _DeltaAppState extends State<DeltaApp> with WidgetsBindingObserver {
         builder: (context) {
           Delta.init(
             context,
-            designSize: widget.designSize,
-            splitScreenMode: widget.splitScreenMode,
-            minTextAdapt: widget.minTextAdapt,
+            designSize: widget.size,
+            splitScreenMode: widget.splitMode,
+            minTextAdapt: widget.minTextAdaptation,
             scaleByHeight: widget.scaleByHeight,
           );
           final deviceData = MediaQuery.maybeOf(context);
-          final deviceSize = deviceData?.size ?? widget.designSize;
+          final deviceSize = deviceData?.size ?? widget.size;
           return MediaQuery(
             data: MediaQueryData.fromView(View.of(context)),
             child: SizedBox(
@@ -121,8 +123,8 @@ class _DeltaAppState extends State<DeltaApp> with WidgetsBindingObserver {
                 alignment: Alignment.center,
                 child: SizedBox(
                   width: widget.scaleByHeight
-                      ? (deviceSize.height * widget.designSize.width) /
-                          widget.designSize.height
+                      ? (deviceSize.height * widget.size.width) /
+                          widget.size.height
                       : deviceSize.width,
                   height: deviceSize.height,
                   child: widget.builder(context, widget.child),
@@ -135,17 +137,17 @@ class _DeltaAppState extends State<DeltaApp> with WidgetsBindingObserver {
     );
   }
 
-  ///When the widget is Wrapped in media query
+  ///When the widget is Wrapped in MediaQuery
   Widget wrapped(BuildContext context) {
     Delta.init(
       context,
-      designSize: widget.designSize,
-      splitScreenMode: widget.splitScreenMode,
-      minTextAdapt: widget.minTextAdapt,
+      designSize: widget.size,
+      splitScreenMode: widget.splitMode,
+      minTextAdapt: widget.minTextAdaptation,
       scaleByHeight: widget.scaleByHeight,
     );
     final deviceData = MediaQuery.maybeOf(context);
-    final deviceSize = deviceData?.size ?? widget.designSize;
+    final deviceSize = deviceData?.size ?? widget.size;
     return SizedBox(
       width: deviceSize.width,
       height: deviceSize.height,
@@ -154,8 +156,7 @@ class _DeltaAppState extends State<DeltaApp> with WidgetsBindingObserver {
         alignment: Alignment.center,
         child: SizedBox(
           width: widget.scaleByHeight
-              ? (deviceSize.height * widget.designSize.width) /
-                  widget.designSize.height
+              ? (deviceSize.height * widget.size.width) / widget.size.height
               : deviceSize.width,
           height: deviceSize.height,
           child: widget.builder(context, widget.child),
@@ -169,9 +170,9 @@ class _DeltaAppState extends State<DeltaApp> with WidgetsBindingObserver {
     return context.findAncestorWidgetOfExactType<MaterialApp>() != null;
   }
 
-  void _updateElementInTree(Element el) {
+  void _updateElement(Element el) {
     el.markNeedsBuild();
-    el.visitChildren(_updateElementInTree);
+    el.visitChildren(_updateElement);
   }
 
   WidgetsBinding get binding => WidgetsFlutterBinding.ensureInitialized();

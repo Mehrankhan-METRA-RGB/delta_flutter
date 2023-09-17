@@ -39,8 +39,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    // DateTime.parse(formattedString)
+    print(DateTime.now());
     DateTime date = DateTime.now().subtract(const Duration(days: 30));
+    print(date);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Delta.data.theme.colorScheme.background,
@@ -52,8 +53,121 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Item(
-              title: 'Value',
-              subTitle: Delta.data.width.toString(),
+              title: '90 meterToLightMinute',
+              subTitle: "${Delta.data.convert.meterToLightMinute(90)}",
+            ),
+
+            Item(
+              title: 'Country Area',
+              subTitle: "pakistan".countryDetail.area.toString(),
+            ),
+
+            Item(
+              title: 'Country altSpellings',
+              subTitle: "pakistan".countryDetail.altSpellings.toString(),
+            ),
+            Item(
+              title: 'Country Cities',
+              subTitle: "pakistan".countryDetail.cities.toString(),
+            ),
+
+            Item(
+              title: 'Country Population',
+              subTitle: "pakistan".countryDetail.population.toString(),
+            ),
+
+            Item(
+              title: 'Country Dial Code',
+              subTitle: "pakistan".countryDetail.callingCodes.toString(),
+            ),
+
+            Item(
+              title: 'Country Currencies',
+              subTitle: "pakistan"
+                  .countryDetail
+                  .currencies!
+                  .map((e) => e.toRawJson())
+                  .toString(),
+            ),
+            Item(
+              title: 'Country Name',
+              subTitle: "pakistan".countryDetail.name!,
+            ),
+
+            ///Sized box with adaptive height of 30 dp
+            30.h.y,
+
+            const Divider(),
+            Item(
+              title: 'Numeral Counts Formats',
+              titleStyle: Delta.data.textTheme.headlineSmall,
+              subTitle: " ",
+            ),
+            const Divider(),
+            Item(
+              title: 'longIndianNumeral',
+              subTitle: "2390900977:${2390900977.longIndianNumeral}",
+            ),
+
+            Item(
+              title: 'longSINumeral',
+              subTitle: "2390051100:${2390051100.longSINumeral}",
+            ),
+
+            Item(
+              title: 'shortSINumeral',
+              subTitle: "2390000000:${2390000000.shortSINumeral}",
+            ),
+            Item(
+              title: 'shortSINumeral',
+              subTitle: "2390000000:${2390000000.shortSINumeral}",
+            ),
+
+            ///Sized box with adaptive height of 30 dp
+            30.h.y,
+
+            const Divider(),
+            Item(
+              title: 'DATE TIME FORMATS',
+              titleStyle: Delta.data.textTheme.headlineSmall,
+              subTitle: " ",
+            ),
+            const Divider(),
+            Item(
+              title: 'firebase',
+              subTitle: date.firebase,
+            ),
+            Item(
+              title: 'hmAndSeconds',
+              subTitle: date.hmAndSeconds,
+            ),
+            Item(
+              title: 'iso801',
+              subTitle: date.iso801,
+            ),
+            Item(
+              title: 'isLeapYear',
+              subTitle: "$date is leapYear: ${date.isLeapYear}",
+            ),
+            Item(
+              title: 'macOSDateTime',
+              subTitle: date.macOSDateTime,
+            ),
+            Item(
+              title: 'dayTimeName',
+              subTitle: date.dayTimeName,
+            ),
+            Item(
+              title: 'shortUSDateTime',
+              subTitle: date.shortUSDateTime,
+            ),
+            Item(
+              title: 'emailDate',
+              subTitle: date.emailDate,
+            ),
+            Item(
+              title: 'SHMMDY',
+              subTitle: date.SHMMDY,
             ),
             Item(
               title: 'Facebook Date',
@@ -98,19 +212,24 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class Item extends StatelessWidget {
-  const Item({required this.title, required this.subTitle, super.key});
+  const Item(
+      {required this.title,
+      this.titleStyle,
+      required this.subTitle,
+      super.key});
   final String title;
   final String subTitle;
+  final TextStyle? titleStyle;
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
         title,
-        style: Delta.data.textTheme.headlineSmall,
+        style: titleStyle ?? Delta.data.textTheme.titleLarge,
       ),
       subtitle: SelectableText(
         subTitle,
-        style: Delta.data.textTheme.titleMedium,
+        style: Delta.data.textTheme.bodyLarge,
       ),
     );
   }

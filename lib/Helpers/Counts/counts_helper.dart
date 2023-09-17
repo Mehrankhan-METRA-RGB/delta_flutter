@@ -8,7 +8,7 @@ class CountsHelper {
       val = value;
     }
 
-    if (val > 0 && val < 999) return "$val";
+    if (val >= 0 && val < 999) return "$val";
     if (val > 999 && val <= 999999) {
       return "${val / 1000}K";
     } else if (val > 999999 && val < 1000000000) {
@@ -43,7 +43,7 @@ class CountsHelper {
       val = value;
     }
 
-    if (val > 0 && val < 999) return "$val";
+    if (val >= 0 && val < 999) return "$val";
 
     if (val > 999 && val <= 99999) {
       return "${val / 1000} thousand";

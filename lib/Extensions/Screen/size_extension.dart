@@ -44,7 +44,7 @@ extension SizeExtension on num {
   double get px => Delta().pixelsToFlutterUnits(this);
 
   ///Will Convert flutter value to pixels
-  ///NOTE: The User must call this after Flutter unit
+  ///NOTE: The User must call this after Flutter unit like (60.toPx)
   double get toPx => Delta().flutterUnitToPixels(this);
 
   ///Multiple of screen height

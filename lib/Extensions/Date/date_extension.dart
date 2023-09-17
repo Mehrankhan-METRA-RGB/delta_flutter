@@ -17,11 +17,11 @@ extension Date on DateTime {
   /// Pakistani Format
   String get slash_DMY => DateHelper().SLASH_PAKISTANI(millisecondsSinceEpoch);
 
-  ///December 3rd 2014
-  ///
-  /// Pakistani Format
-  String get littleEndian =>
-      DateHelper().SLASH_PAKISTANI(millisecondsSinceEpoch);
+  // ///December 3rd 2014
+  // ///
+  // /// Pakistani Format
+  // String get littleEndian =>
+  //     DateHelper().SLASH_PAKISTANI(millisecondsSinceEpoch);
 
   /// 9:12:23 PM
   String get HMS_12 => DateHelper().HMS_12(millisecondsSinceEpoch);
@@ -79,7 +79,7 @@ extension Date on DateTime {
   String get shortUSDateTime =>
       DateHelper().short_US_DateTime(millisecondsSinceEpoch);
 
-  /// MAC OS Format:   Sun 27 Aug  11:30 PM
+  /// MAC OS Format: The date and time format "Sun 27 Aug 11:30 PM" appears to be in a relatively standard and commonly used format for displaying dates and times in a readable, human-friendly way. macOS allows you to customize date and time formats to a certain extent, but this particular format doesn't require extensive customization and is typically available as one of the default options.
   String get macOSDateTime =>
       DateHelper().mac_OS_DateTime(millisecondsSinceEpoch);
 
@@ -98,6 +98,10 @@ extension Date on DateTime {
   ///    'Night', 21 -> 23
   ///
   ///    'Midnight' 0 -> 3
+  /// Determines the time of day based on the given hour.
+  ///
+  /// @param hour The hour of the day (in 24-hour format).
+  /// @return A string representing the time of day.
   String get dayTimeName => DateHelper().dayTimeName(millisecondsSinceEpoch);
 
   ///A leap year is a year with an extra day—February 29—which is added nearly every four years to the calendar year. In an ordinary year, there are 365 days in the year, but in a leap year, there are 366 days. The extra day is added to the calendar every four years so that our calendar stays synchronized with the astronomical seasons.

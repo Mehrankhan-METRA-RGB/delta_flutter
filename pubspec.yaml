@@ -4,7 +4,7 @@ version: 0.0.1
 #homepage: documentation page
 #repository: repo link
 #issue_tracker: github Issue link
-#documentation: other documentation
+documentation: A flutter package for adapting screen and font size. Provide tons of features including DateTime, Theme, MediaQuery, List and String Extensions
 
 environment:
   sdk: '>=3.0.5 <4.0.0'
