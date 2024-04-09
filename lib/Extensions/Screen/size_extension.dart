@@ -1,146 +1,35 @@
 import 'dart:math';
 
-import 'package:delta/Initializer/delta_initializer.dart';
 import 'package:flutter/material.dart';
 
 extension SizeExtension on num {
-  ///  adaptive width
-  double get w => Delta().adaptiveWidth(this);
-
-  /// adaptive Height
-  double get h => Delta().adaptiveHeight(this);
-
-  ///[Delta.radius]
-  double get r => Delta().radius(this);
-
-  ///[Delta.setSp]
-  double get sp => Delta().setSp(this);
-
   ///Will return Adaptive SizedBox on corresponding num value
   /// The value will assign to SizeBox width
   ///
   /// i.e:  60.x,  means SizedBox(width:60),
-  SizedBox get x => SizedBox(width: Delta().adaptiveWidth(this));
+  SizedBox get width => SizedBox(width: toDouble());
 
   ///Will return Adaptive SizedBox on corresponding num value
   /// The value will assign to SizeBox Height
   ///
   /// i.e:  60.y,  means SizedBox(height:60),
-  SizedBox get y => SizedBox(height: Delta().adaptiveHeight(this));
+  SizedBox get height => SizedBox(height: toDouble());
 
-  ///smart size :  it check your value - if it is bigger than your value it will set your value
-  ///for example, you have set 16.sm() , if for your screen 16.sp() is bigger than 16 , then it will set 16 not 16.sp()
-  ///I think that it is good for save size balance on big sizes of screen
-  double get spMin => min(toDouble(), sp);
+  /// To convert a Flutter unit (e.g., double) to pixels (px), you can use the MediaQuery class to access the device's pixel ratio and then multiply the value you want to convert by this ratio.
 
-  double get spMax => max(toDouble(), sp);
+  double toPx(BuildContext context) {
+    return toDouble() * MediaQuery.devicePixelRatioOf(context);
+  }
 
-  ///Multiple of screen width
-  double get sw => Delta().width * this;
-
-  ///Use this method when you have pixels values available. For Example your giving 1020 pixels. just use this method right after the value like [1020.px]
-  ///
-  /// This method will automatically convert your pixels value into flutter adaptive unit, depends on device pixel ratio
-  double get px => Delta().pixelsToFlutterUnits(this);
-
-  ///Will Convert flutter value to pixels
-  ///NOTE: The User must call this after Flutter unit like (60.toPx)
-  double get toPx => Delta().flutterUnitToPixels(this);
-
-  ///Multiple of screen height
-  double get sh => Delta().height * this;
+  ///double pixels is the value you want to convert from pixels to Flutter units.
+  /// MediaQuery.devicePixelRatioOf(context) retrieves the device's pixel ratio, which represents the number of physical pixels on the screen for each logical pixel in Flutter.
+  /// pixels / pixelRatio performs the conversion by dividing the input pixels by the pixel ratio.
+  double fromPx(BuildContext context) {
+    return toDouble() / MediaQuery.devicePixelRatioOf(context);
+  }
 }
 
-extension EdgeInsetsExtension on EdgeInsets {
-  /// Creates adapt insets using r [SizeExtension].
-  EdgeInsets get r => copyWith(
-        top: top.r,
-        bottom: bottom.r,
-        right: right.r,
-        left: left.r,
-      );
-
-  EdgeInsets get w => copyWith(
-        top: top.w,
-        bottom: bottom.w,
-        right: right.w,
-        left: left.w,
-      );
-
-  EdgeInsets get h => copyWith(
-        top: top.h,
-        bottom: bottom.h,
-        right: right.h,
-        left: left.h,
-      );
-}
-
-extension BorderRaduisExtension on BorderRadius {
-  /// Creates adapt BorderRadius using r [SizeExtension].
-  BorderRadius get r => copyWith(
-        bottomLeft: bottomLeft.r,
-        bottomRight: bottomRight.r,
-        topLeft: topLeft.r,
-        topRight: topRight.r,
-      );
-
-  BorderRadius get w => copyWith(
-        bottomLeft: bottomLeft.w,
-        bottomRight: bottomRight.w,
-        topLeft: topLeft.w,
-        topRight: topRight.w,
-      );
-
-  BorderRadius get h => copyWith(
-        bottomLeft: bottomLeft.h,
-        bottomRight: bottomRight.h,
-        topLeft: topLeft.h,
-        topRight: topRight.h,
-      );
-}
-
-extension RaduisExtension on Radius {
-  /// Creates adapt Radius using r [SizeExtension].
-  Radius get r => Radius.elliptical(x.r, y.r);
-
-  Radius get w => Radius.elliptical(x.w, y.w);
-
-  Radius get h => Radius.elliptical(x.h, y.h);
-}
-
-extension BoxConstraintsExtension on BoxConstraints {
-  /// Creates adapt BoxConstraints using r [SizeExtension].
-  BoxConstraints get r => copyWith(
-        maxHeight: maxHeight.r,
-        maxWidth: maxWidth.r,
-        minHeight: minHeight.r,
-        minWidth: minWidth.r,
-      );
-
-  /// Creates adapt BoxConstraints using h-w [SizeExtension].
-  BoxConstraints get hw => copyWith(
-        maxHeight: maxHeight.h,
-        maxWidth: maxWidth.w,
-        minHeight: minHeight.h,
-        minWidth: minWidth.w,
-      );
-
-  BoxConstraints get w => copyWith(
-        maxHeight: maxHeight.w,
-        maxWidth: maxWidth.w,
-        minHeight: minHeight.w,
-        minWidth: minWidth.w,
-      );
-
-  BoxConstraints get h => copyWith(
-        maxHeight: maxHeight.h,
-        maxWidth: maxWidth.h,
-        minHeight: minHeight.h,
-        minWidth: minWidth.h,
-      );
-}
-
-extension CheckScreenType on MediaQueryData {
+extension ScreenSize on BuildContext {
   /// iPhone 6S
   /// |_ [portrait]
   ///    |_ size: 375.0x667.0, pixelRatio: 2.0, pixels: 750.0x1334.0
@@ -165,7 +54,7 @@ extension CheckScreenType on MediaQueryData {
   ///    |_ size: 896.0x414.0, pixelRatio: 3.0, pixels: 2688.0x1242.0
   ///       |_ diagonal: 987.0217829409845
   bool get isMobile {
-    Size size = this.size;
+    Size size = MediaQuery.sizeOf(this);
     double diagonal =
         sqrt((size.width * size.width) + (size.height * size.height));
 
@@ -195,9 +84,148 @@ extension CheckScreenType on MediaQueryData {
   ///    |_ size: 1366.0x1024.0, pixelRatio: 2.0, pixels: 2732.0x2048.0
   ///       |_ diagonal: 1707.2000468603555
   bool get isTablet {
-    Size size = this.size;
+    Size size = MediaQuery.sizeOf(this);
     double diagonal =
         sqrt((size.width * size.width) + (size.height * size.height));
     return diagonal > 1100.0;
   }
 }
+
+// extension SizeExtension on num {
+//   ///  adaptive width
+//   double get w => Delta().adaptiveWidth(this);
+//
+//   /// adaptive Height
+//   double get h => Delta().adaptiveHeight(this);
+//
+//   ///[Delta.radius]
+//   double get r => Delta().radius(this);
+//
+//   ///[Delta.setSp]
+//   double get sp => Delta().setSp(this);
+//
+//   ///Will return Adaptive SizedBox on corresponding num value
+//   /// The value will assign to SizeBox width
+//   ///
+//   /// i.e:  60.x,  means SizedBox(width:60),
+//   SizedBox get x => SizedBox(width: Delta().adaptiveWidth(this));
+//
+//   ///Will return Adaptive SizedBox on corresponding num value
+//   /// The value will assign to SizeBox Height
+//   ///
+//   /// i.e:  60.y,  means SizedBox(height:60),
+//   SizedBox get y => SizedBox(height: Delta().adaptiveHeight(this));
+//
+//   ///smart size :  it check your value - if it is bigger than your value it will set your value
+//   ///for example, you have set 16.sm() , if for your screen 16.sp() is bigger than 16 , then it will set 16 not 16.sp()
+//   ///I think that it is good for save size balance on big sizes of screen
+//   double get spMin => min(toDouble(), sp);
+//
+//   double get spMax => max(toDouble(), sp);
+//
+//   ///Multiple of screen width
+//   double get sw => Delta().width * this;
+//
+//   ///Use this method when you have pixels values available. For Example your giving 1020 pixels. just use this method right after the value like [1020.px]
+//   ///
+//   /// This method will automatically convert your pixels value into flutter adaptive unit, depends on device pixel ratio
+//   double get px => Delta().pixelsToFlutterUnits(this);
+//
+//   ///Will Convert flutter value to pixels
+//   ///NOTE: The User must call this after Flutter unit like (60.toPx)
+//   double get toPx => Delta().flutterUnitToPixels(this);
+
+//
+//   ///Multiple of screen height
+//   double get sh => Delta().height * this;
+// }
+//
+// extension EdgeInsetsExtension on EdgeInsets {
+//   /// Creates adapt insets using r [SizeExtension].
+//   EdgeInsets get r => copyWith(
+//         top: top.r,
+//         bottom: bottom.r,
+//         right: right.r,
+//         left: left.r,
+//       );
+//
+//   EdgeInsets get w => copyWith(
+//         top: top.w,
+//         bottom: bottom.w,
+//         right: right.w,
+//         left: left.w,
+//       );
+//
+//   EdgeInsets get h => copyWith(
+//         top: top.h,
+//         bottom: bottom.h,
+//         right: right.h,
+//         left: left.h,
+//       );
+// }
+//
+// extension BorderRaduisExtension on BorderRadius {
+//   /// Creates adapt BorderRadius using r [SizeExtension].
+//   BorderRadius get r => copyWith(
+//         bottomLeft: bottomLeft.r,
+//         bottomRight: bottomRight.r,
+//         topLeft: topLeft.r,
+//         topRight: topRight.r,
+//       );
+//
+//   BorderRadius get w => copyWith(
+//         bottomLeft: bottomLeft.w,
+//         bottomRight: bottomRight.w,
+//         topLeft: topLeft.w,
+//         topRight: topRight.w,
+//       );
+//
+//   BorderRadius get h => copyWith(
+//         bottomLeft: bottomLeft.h,
+//         bottomRight: bottomRight.h,
+//         topLeft: topLeft.h,
+//         topRight: topRight.h,
+//       );
+// }
+//
+// extension RaduisExtension on Radius {
+//   /// Creates adapt Radius using r [SizeExtension].
+//   Radius get r => Radius.elliptical(x.r, y.r);
+//
+//   Radius get w => Radius.elliptical(x.w, y.w);
+//
+//   Radius get h => Radius.elliptical(x.h, y.h);
+// }
+//
+// extension BoxConstraintsExtension on BoxConstraints {
+//   /// Creates adapt BoxConstraints using r [SizeExtension].
+//   BoxConstraints get r => copyWith(
+//         maxHeight: maxHeight.r,
+//         maxWidth: maxWidth.r,
+//         minHeight: minHeight.r,
+//         minWidth: minWidth.r,
+//       );
+//
+//   /// Creates adapt BoxConstraints using h-w [SizeExtension].
+//   BoxConstraints get hw => copyWith(
+//         maxHeight: maxHeight.h,
+//         maxWidth: maxWidth.w,
+//         minHeight: minHeight.h,
+//         minWidth: minWidth.w,
+//       );
+//
+//   BoxConstraints get w => copyWith(
+//         maxHeight: maxHeight.w,
+//         maxWidth: maxWidth.w,
+//         minHeight: minHeight.w,
+//         minWidth: minWidth.w,
+//       );
+//
+//   BoxConstraints get h => copyWith(
+//         maxHeight: maxHeight.h,
+//         maxWidth: maxWidth.h,
+//         minHeight: minHeight.h,
+//         minWidth: minWidth.h,
+//       );
+// }
+//

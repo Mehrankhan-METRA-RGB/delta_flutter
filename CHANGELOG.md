@@ -9,3 +9,6 @@
 
 ## 0.0.3
 Added new key features
+
+## 0.0.4
+Improve Documentations and added extra features

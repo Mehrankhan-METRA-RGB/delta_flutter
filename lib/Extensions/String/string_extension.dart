@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:delta/Initializer/delta_initializer.dart';
 import 'package:flutter/cupertino.dart';
 
 extension DeltaString on String {
@@ -127,21 +126,21 @@ extension DeltaString on String {
   ///
   /// Finally, we demonstrate how to use the censorBadWords function with a
   /// sample text, and it prints the text with the bad words replaced by asterisks.
-  String censorWords({List<String>? censors}) {
+  String censorWords({required List<String> censors}) {
     // List of bad words to censor
-    List<String>? badWords = censors ?? Delta.data.blockedWords;
-    if (badWords != null) {
-      // Create a regular expression pattern for each bad word
-      String pattern = badWords.map((word) => '\\b$word\\b').join('|');
-      RegExp regExp = RegExp(pattern, caseSensitive: false);
+    // List<String>? badWords = censors ?? Delta.data.blockedWords;
+    // if (badWords != null) {
+    // Create a regular expression pattern for each bad word
+    String pattern = censors.map((word) => '\\b$word\\b').join('|');
+    RegExp regExp = RegExp(pattern, caseSensitive: false);
 
-      // Replace bad words with asterisks
-      return replaceAllMapped(regExp, (match) => '*' * match.group(0)!.length);
-    } else {
-      throw ErrorDescription(
-          "The method failed because you haven't pass List of censor words on which the will have to block them"
-          "You have two ways to pass censor words either in [DeltaApp] or directly to extension method like 'What is your name?'.censorWords(censors:['name']) the method will return 'What is you ****?'  ");
-    }
+    // Replace bad words with asterisks
+    return replaceAllMapped(regExp, (match) => '*' * match.group(0)!.length);
+    // } else {
+    //   throw ErrorDescription(
+    //       "The method failed because you haven't pass List of censor words on which the will have to block them"
+    //       "You have two ways to pass censor words either in [DeltaApp] or directly to extension method like 'What is your name?'.censorWords(censors:['name']) the method will return 'What is you ****?'  ");
+    // }
   }
 
   /// The findCoordinates extension uses a regular expression (coordinatesRegExp)

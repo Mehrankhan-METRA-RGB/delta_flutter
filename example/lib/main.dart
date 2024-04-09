@@ -11,16 +11,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return DeltaApp(
+    return MaterialApp(
+      title: 'Flutter Delta',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      builder: (BuildContext context, Widget? child) => const MaterialApp(
-        title: 'Flutter Delta',
-        home: MyHomePage(title: 'Flutter Delta  '),
-      ),
+      home: const MyHomePage(title: 'Flutter Delta  '),
     );
+
+    //   DeltaApp(
+    //   theme: ThemeData(
+    //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    //     useMaterial3: true,
+    //   ),
+    //   builder: (BuildContext context, Widget? child) =>
+    // );
   }
 }
 
@@ -39,9 +45,11 @@ class _MyHomePageState extends State<MyHomePage> {
     print(DateTime.now());
     DateTime date = DateTime.now().subtract(const Duration(days: 30));
     print(date);
+
+    ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Delta.data.theme.colorScheme.background,
+        backgroundColor: theme.colorScheme.background,
         title: Text(widget.title),
       ),
       body: SingleChildScrollView(
@@ -49,10 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Item(
-              title: '90 meterToLightMinute',
-              subTitle: "${Delta.data.length.centimeterToInch(90)}",
-            ),
+            // Item(
+            //   title: '90 meterToLightMinute',
+            //   subTitle: "${Delta.data.length.centimeterToInch(90)}",
+            // ),
 
             Item(
               title: 'Country Area',
@@ -92,14 +100,14 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
 
             ///Sized box with adaptive height of 30 dp
-            30.h.y,
+            30.height,
 
             const Divider(),
-            Item(
-              title: 'Numeral Counts Formats',
-              titleStyle: Delta.data.textTheme.headlineSmall,
-              subTitle: " ",
-            ),
+            // Item(
+            //   title: 'Numeral Counts Formats',
+            //   titleStyle: Delta.data.textTheme.headlineSmall,
+            //   subTitle: " ",
+            // ),
             const Divider(),
             Item(
               title: 'longIndianNumeral',
@@ -121,14 +129,14 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
 
             ///Sized box with adaptive height of 30 dp
-            30.h.y,
+            30.height,
 
             const Divider(),
-            Item(
-              title: 'DATE TIME FORMATS',
-              titleStyle: Delta.data.textTheme.headlineSmall,
-              subTitle: " ",
-            ),
+            // Item(
+            //   title: 'DATE TIME FORMATS',
+            //   titleStyle: Delta.data.textTheme.headlineSmall,
+            //   subTitle: " ",
+            // ),
             const Divider(),
             Item(
               title: 'firebase',
@@ -219,14 +227,15 @@ class Item extends StatelessWidget {
   final TextStyle? titleStyle;
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return ListTile(
       title: Text(
         title,
-        style: titleStyle ?? Delta.data.textTheme.titleLarge,
+        style: titleStyle ?? theme.textTheme.titleLarge,
       ),
       subtitle: SelectableText(
         subTitle,
-        style: Delta.data.textTheme.bodyLarge,
+        style: theme.textTheme.bodyLarge,
       ),
     );
   }
